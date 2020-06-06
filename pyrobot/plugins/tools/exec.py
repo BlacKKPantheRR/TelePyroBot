@@ -11,11 +11,11 @@ import time
 
 from pyrogram import Client, Filters
 
-from pyrobot import MAX_MESSAGE_LENGTH, COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import MAX_MESSAGE_LENGTH, COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 
-@PyroBotCMD.on_message(Filters.command("exec", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("exec", COMMAND_HAND_LER) & sudo_filter)
 async def execution(_, message):
     cmd = message.text.split(" ", maxsplit=1)[1]
 

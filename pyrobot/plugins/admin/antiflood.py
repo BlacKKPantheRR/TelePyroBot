@@ -11,7 +11,7 @@ from pyrogram import (
 from pyrobot import (
     COMMAND_HAND_LER,
     DB_URI,
-    PyroBotCMD
+    app
 )
 
 from pyrobot.helper_functions.admin_check import admin_check
@@ -21,7 +21,7 @@ if DB_URI is not None:
 
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@PyroBotCMD.on_message(group=1)
+@app.on_message(group=1)
 async def check_flood(client, message):
     """ check all messages """
     if DB_URI is None:
@@ -70,7 +70,7 @@ because he reached the defined flood limit.
         )
 
 
-@PyroBotCMD.on_message(Filters.command("setflood", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("setflood", COMMAND_HAND_LER) & sudo_filter)
 async def set_flood(_, message):
     """ /setflood command """
     is_admin = await admin_check(message)

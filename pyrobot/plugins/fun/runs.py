@@ -2,7 +2,7 @@ import random
 
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 RUN_STRINGS = (
@@ -16,7 +16,7 @@ RUN_STRINGS = (
 )
 
 
-@PyroBotCMD.on_message(Filters.command("runs", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("runs", COMMAND_HAND_LER) & sudo_filter)
 async def runs(_, message):
     """ /runs strings """
     effective_string = random.choice(RUN_STRINGS)

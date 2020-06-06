@@ -4,7 +4,7 @@ Syntax: .ping"""
 import time
 from pyrogram import Client, Filters
 from pyrobot.__main__ import get_runtime
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 # -- Constants -- #
@@ -14,7 +14,7 @@ REPO = "**UserBot is available on** [GitHub](https://github.com/SkuzzyxD/TelePyr
 # -- Constants End -- #
 
 
-@PyroBotCMD.on_message(Filters.command(["alive", "start"], COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command(["alive", "start"], COMMAND_HAND_LER) & sudo_filter)
 async def check_alive(_, message):
     try:
         await message.edit(ALIVE)
@@ -22,12 +22,12 @@ async def check_alive(_, message):
         await message.reply_text(ALIVE)
 
 
-@PyroBotCMD.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
 async def help_me(_, message):
     await message.reply_sticker(HELP)
 
 
-@PyroBotCMD.on_message(Filters.command("ping", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("ping", COMMAND_HAND_LER) & sudo_filter)
 async def ping(_, message):
     start_t = time.time()
     try:
@@ -39,7 +39,7 @@ async def ping(_, message):
     await rm.edit(f"Pong!\n`{time_taken_s:.3f}` ms", parse_mode="md")
 
 
-@PyroBotCMD.on_message(Filters.command("repo", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("repo", COMMAND_HAND_LER) & sudo_filter)
 async def repo(_, message):
     try:
         await message.edit(REPO)

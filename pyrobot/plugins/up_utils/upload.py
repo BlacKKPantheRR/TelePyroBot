@@ -13,14 +13,14 @@ from pyrogram import (
 from pyrobot import (
     COMMAND_HAND_LER,
     TMP_DOWNLOAD_DIRECTORY,
-    PyroBotCMD
+    app
 )
 from pyrobot.helper_functions.check_if_thumb_exists import is_thumb_image_exists
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 from pyrobot.helper_functions.display_progress_dl_up import progress_for_pyrogram
 
 
-@PyroBotCMD.on_message(Filters.command("uploadasdoc", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("uploadasdoc", COMMAND_HAND_LER) & sudo_filter)
 async def upload_as_document(client, message):
     status_message = await message.reply_text("...")
     if " " in message.text:
@@ -52,7 +52,7 @@ async def upload_as_document(client, message):
 
 
 
-@PyroBotCMD.on_message(Filters.command("uploadasvideo", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("uploadasvideo", COMMAND_HAND_LER) & sudo_filter)
 async def upload_as_video(client, message):
     status_message = await message.reply_text("...")
     if " " in message.text:
@@ -88,7 +88,7 @@ async def upload_as_video(client, message):
 
 
 
-@PyroBotCMD.on_message(Filters.command("uploadasphoto", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("uploadasphoto", COMMAND_HAND_LER) & sudo_filter)
 async def upload_as_photo(client, message):
     status_message = await message.reply_text("...")
     if " " in message.text:

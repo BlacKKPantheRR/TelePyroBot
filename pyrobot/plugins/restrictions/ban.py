@@ -1,11 +1,11 @@
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.admin_check import admin_check
 from pyrobot.helper_functions.extract_user import extract_user
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@PyroBotCMD.on_message(Filters.command("ban", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("ban", COMMAND_HAND_LER) & sudo_filter)
 async def ban_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin:

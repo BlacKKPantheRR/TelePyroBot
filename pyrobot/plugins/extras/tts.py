@@ -1,10 +1,10 @@
 import os
 from gtts import gTTS
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@PyroBotCMD.on_message(Filters.command("tts", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("tts", COMMAND_HAND_LER) & sudo_filter)
 async def tts(client, message):
     global lang
     if len(message.text.split()) == 1:
@@ -24,7 +24,7 @@ async def tts(client, message):
     os.remove("pyrobot/cache/voice.mp3")
 
 
-@PyroBotCMD.on_message(Filters.command("ttslang", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("ttslang", COMMAND_HAND_LER) & sudo_filter)
 async def ttslang(client, message):
     global lang
     temp = lang

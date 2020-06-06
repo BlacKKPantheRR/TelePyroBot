@@ -35,5 +35,5 @@ SUDO_USERS = list(set(SUDO_USERS))
 TG_MAX_SELECT_LEN = Config.TG_MAX_SELECT_LEN
 
 #Login
-PyroBotCMD = Client(HU_STRING_SESSION, api_id=APP_ID, api_hash=API_HASH, workers=4, plugins=dict(root="pyrobot/plugins"),
+app = Client(HU_STRING_SESSION, api_id=APP_ID, api_hash=API_HASH, workers=4, plugins=dict(root="pyrobot/plugins"),
 workdir=TMP_DOWNLOAD_DIRECTORY)

@@ -2,7 +2,7 @@ from html import escape
 
 import requests
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 """
@@ -13,7 +13,7 @@ Get current weather in your location.
 Powered by `wttr.in`
 """
 
-@PyroBotCMD.on_message(Filters.command("weather", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("weather", COMMAND_HAND_LER) & sudo_filter)
 async def weather(client, message):
     if len(message.text.split()) == 1:
         await message.edit("Usage: `weather Maldives`")

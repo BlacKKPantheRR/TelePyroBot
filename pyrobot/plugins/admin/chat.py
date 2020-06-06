@@ -1,10 +1,10 @@
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD
+from pyrobot import COMMAND_HAND_LER, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 from pyrobot.helper_functions.admin_check import admin_check
 
 
-@PyroBotCMD.on_message(Filters.command("leavechat", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("leavechat", COMMAND_HAND_LER) & sudo_filter)
 async def leavechat(client, message):
     if message.chat.type in ['group', 'supergroup']:
         chat_id = message.chat.id
@@ -14,7 +14,7 @@ async def leavechat(client, message):
         await client.leave_chat(chat_id, delete=True)
 
 
-@PyroBotCMD.on_message(Filters.command("invitelink", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("invitelink", COMMAND_HAND_LER) & sudo_filter)
 async def invitelink(client, message):
     is_admin = await admin_check(message)
     if not is_admin:
@@ -24,7 +24,7 @@ async def invitelink(client, message):
     await message.reply_text(f"**Link for Chat:**\n`{link}`", parse_mode="md")
 
 
-@PyroBotCMD.on_message(Filters.command("setchatpic", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("setchatpic", COMMAND_HAND_LER) & sudo_filter)
 async def set_picture(client, message):
     if message.chat.type in ['group', 'supergroup']:
         is_admin = await admin_check(message)
@@ -44,7 +44,7 @@ async def set_picture(client, message):
             await rm.edit(f"**Could not Change Chat Pic due to:**\n`{ef}`")
 
 
-@PyroBotCMD.on_message(Filters.command("delchatpic", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("delchatpic", COMMAND_HAND_LER) & sudo_filter)
 async def delchatpic(client, message):
     is_admin = await admin_check(message)
     if not is_admin:
@@ -57,7 +57,7 @@ async def delchatpic(client, message):
         await message.reply_text(f"Error deleting Chat Pic due to:\n`{ef}`", parse_mode="md")
 
 
-@PyroBotCMD.on_message(Filters.command("setchatname", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("setchatname", COMMAND_HAND_LER) & sudo_filter)
 async def setchatname(client, message):
     is_admin = await admin_check(message)
     if not is_admin:
@@ -75,7 +75,7 @@ async def setchatname(client, message):
         await client.reply_text(f"**Could not Change Chat Title due to:**\n`{ef}`", parse_mode="md")
 
 
-@PyroBotCMD.on_message(Filters.command("setchatdesc", COMMAND_HAND_LER) & sudo_filter)
+@app.on_message(Filters.command("setchatdesc", COMMAND_HAND_LER) & sudo_filter)
 async def setchatdesc(client, message):
     is_admin = await admin_check(message)
     if not is_admin:
