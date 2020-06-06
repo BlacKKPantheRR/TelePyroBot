@@ -2,7 +2,6 @@
 Syntax: .ping"""
 
 import time
-
 from pyrogram import Client, Filters
 from pyrobot.__main__ import get_runtime
 from pyrobot import COMMAND_HAND_LER, PyroBotCMD
@@ -39,7 +38,7 @@ async def check_alive(_, message):
     if seconds:
         alivetext += "{} seconds".format(seconds)
 
-     TIME_ALIVE= "\nBot was alive for `{}`".format(alivetext)
+     TIME_ALIVE= f"\nBot was alive for `{alivetext}`"
      text = ALIVE + TIME_ALIVE
      await message.reply_text(text, parse_mode="md")
 

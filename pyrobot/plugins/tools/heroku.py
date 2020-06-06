@@ -8,35 +8,39 @@ from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 heroku_api = "https://api.heroku.com"
 Heroku = heroku3.from_key(HEROKU_API_KEY)
+useragent = (
+            'Mozilla/5.0 (Linux; Android 10; SM-G975F) '
+            'AppleWebKit/537.36 (KHTML, like Gecko) '
+            'Chrome/80.0.3987.149 Mobile Safari/537.36'
+            )
+headers = {
+         'User-Agent': useragent,
+         'Authorization': f'Bearer {HEROKU_API_KEY}',
+         'Accept': 'application/vnd.heroku+json; version=3',
+         }
 
 @PyroBotCMD.on_message(Filters.command("restart", COMMAND_HAND_LER) & sudo_filter)
 async def restart(client, message):
     url = heroku_api + f"/apps/{HEROKU_APP_NAME}/dynos/worker"
-    Head = {
-    "Accept" : "application/vnd.heroku+json; version=3",
-    "Authorization" : f"Bearer {HEROKU_API_KEY}"
-        }
-    res = requests.delete(url, headers = Head)
+    res = requests.delete(url, headers = headers)
     await message.reply_text(
         "Restarted!\n"
         f"Do `{COMMAND_HAND_LER}alive` or `{COMMAND_HAND_LER}start` to check if I am online...", parse_mode="md")
 
 
+@PyroBotCMD.on_message(Filters.command("shutdown", COMMAND_HAND_LER) & sudo_filter)
+async def restart(client, message):
+    url = heroku_api + f"/apps/{HEROKU_APP_NAME}/dynos/worker/actions/stop"
+    await message.reply_text(
+        "**Stopped!**\n"
+        "Start me manually from your **Heroku Dashboard** by turning on the **__worker__ dyno**", parse_mode="md")
+    res = requests.post(url, headers = headers)
+
 @PyroBotCMD.on_message(Filters.command("dynostats", COMMAND_HAND_LER) & sudo_filter)
 async def dynostats(client, message):
     msg = await message.reply_text(
         "Processing...!\n", parse_mode="md")
-    useragent = (
-                'Mozilla/5.0 (Linux; Android 10; SM-G975F) '
-                'AppleWebKit/537.36 (KHTML, like Gecko) '
-                'Chrome/80.0.3987.149 Mobile Safari/537.36'
-                )
     u_id = Heroku.account().id
-    headers = {
-     'User-Agent': useragent,
-     'Authorization': f'Bearer {HEROKU_API_KEY}',
-     'Accept': 'application/vnd.heroku+json; version=3.account-quotas',
-                }
     path = "/accounts/" + u_id + "/actions/get-quota"
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
@@ -110,5 +114,4 @@ async def getvar(client, message):
                                "================================"
                                f"\n```{result}```\n"
                                "================================",
-                               parse_mode="md"
-                               )
+                               parse_mode="md")
