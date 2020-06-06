@@ -56,13 +56,13 @@ async def get_note_with_command(message, note_name):
         )
 
 
-@Client.on_message(Filters.command(["getnote", "get"], COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command(["getnote", "get"], COMMAND_HAND_LER) & sudo_filter)
 async def get_note(_, message):
     note_name = " ".join(message.command[1:])
     await get_note_with_command(message, note_name)
 
 
-@Client.on_message(Filters.regex(pattern=r"#(\w+)"))
+@PyroBotCMD.on_message(Filters.regex(pattern=r"#(\w+)"))
 async def get_hash_tag_note(_, message):
     note_name = message.matches[0].group(1)
     await get_note_with_command(message, note_name)

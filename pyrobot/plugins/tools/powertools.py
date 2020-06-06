@@ -2,14 +2,14 @@ import requests
 import heroku3
 import asyncio
 import math
-from pyrobot import COMMAND_HAND_LER, HEROKU_API_KEY, HEROKU_APP_NAME
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD, HEROKU_API_KEY, HEROKU_APP_NAME
 from pyrogram import Client, Filters
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 heroku_api = "https://api.heroku.com"
 Heroku = heroku3.from_key(HEROKU_API_KEY)
 
-@Client.on_message(Filters.command("restart", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("restart", COMMAND_HAND_LER) & sudo_filter)
 async def restart(client, message):
     url = heroku_api + f"/apps/{HEROKU_APP_NAME}/dynos/worker"
     Head = {
@@ -22,7 +22,7 @@ async def restart(client, message):
         f"Do `{COMMAND_HAND_LER}alive` or `{COMMAND_HAND_LER}start` to check if I am online...", parse_mode="md")
 
 
-@Client.on_message(Filters.command("dynostats", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("dynostats", COMMAND_HAND_LER) & sudo_filter)
 async def dynostats(client, message):
     msg = await message.reply_text(
         "Processing...!\n", parse_mode="md")
@@ -79,7 +79,7 @@ async def dynostats(client, message):
                            parse_mode="md"
                            )
 
-@Client.on_message(Filters.command("getvar", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("getvar", COMMAND_HAND_LER) & sudo_filter)
 async def getvar(client, message):
     chat_id = message.chat.id
     if HEROKU_APP_NAME is not None:

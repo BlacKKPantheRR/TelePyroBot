@@ -71,6 +71,6 @@ async def get_note_with_command(message):
         sql.update_previous_welcome(message.chat.id, n_m.message_id)
 
 
-@Client.on_message(Filters.new_chat_members)
+@PyroBotCMD.on_message(Filters.new_chat_members)
 async def new_welcome(_, message):
     await get_note_with_command(message)

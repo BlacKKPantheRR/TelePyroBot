@@ -1,11 +1,11 @@
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 import random
 import time
 
-@Client.on_message(Filters.command("qbot", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("qbot", COMMAND_HAND_LER) & sudo_filter)
 async def quotly(client, message):
     if not message.reply_to_message:
         await message.edit("Reply to any users text message")

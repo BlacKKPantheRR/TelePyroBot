@@ -1,6 +1,6 @@
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 from requests import post
@@ -10,7 +10,7 @@ from time import sleep
 
 CARBON_LANG = "Auto"
 
-@Client.on_message(Filters.command("carbon", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("carbon", COMMAND_HAND_LER) & sudo_filter)
 async def carbon_api(client, message):
     json = {
         "backgroundColor": "rgba(0, 255, 230, 100)",

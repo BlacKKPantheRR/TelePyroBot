@@ -1,10 +1,10 @@
 import asyncio
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 from pyrobot.helper_functions.admin_check import admin_check
 
-@Client.on_message(Filters.command("pin", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("pin", COMMAND_HAND_LER) & sudo_filter)
 async def pin_message(client, message):
     if message.chat.type in ['group', 'supergroup']:
         is_admin = await admin_check(message)
@@ -30,7 +30,7 @@ async def pin_message(client, message):
     await asyncio.sleep(3)
     await message.delete()
 
-@Client.on_message(Filters.command("unpin", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("unpin", COMMAND_HAND_LER) & sudo_filter)
 async def unpin_message(client, message):
     if message.chat.type in ['group', 'supergroup']:
         chat_id = message.chat.id

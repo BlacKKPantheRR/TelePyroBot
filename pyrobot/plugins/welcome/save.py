@@ -20,7 +20,7 @@ if DB_URI is not None:
     import pyrobot.helper_functions.sql_helpers.welcome_sql as sql
 
 
-@Client.on_message(Filters.command(["savewelcome", "setwelcome"], COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command(["savewelcome", "setwelcome"], COMMAND_HAND_LER) & sudo_filter)
 async def save_note(client, message):
     is_admin = await admin_check(message)
     if not is_admin:

@@ -1,16 +1,8 @@
-"""from pyrobot.pyrobot import PyroBot
-
-if __name__ == "__main__":
-    app = PyroBot()
-    app.run()"""
-
-
-#Remove afterwards.............
-from pyrobot import app
+from pyrobot import PyroBotCMD
 
 async def start_bot():
-    await app.start()
+    await PyroBotCMD.start()
 
 if __name__ == '__main__':
-    app.run()
-#Remove afterwards.............
+    LOGGER.info(f"TelePyroBot based on Pyrogram started Successfully! Hello User.")
+    start_bot()

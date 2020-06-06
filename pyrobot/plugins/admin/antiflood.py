@@ -20,7 +20,7 @@ if DB_URI is not None:
 
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@Client.on_message(group=1)
+@PyroBotCMD.on_message(group=1)
 async def check_flood(client, message):
     """ check all messages """
     if DB_URI is None:
@@ -69,7 +69,7 @@ because he reached the defined flood limit.
         )
 
 
-@Client.on_message(Filters.command("setflood", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("setflood", COMMAND_HAND_LER) & sudo_filter)
 async def set_flood(_, message):
     """ /setflood command """
     is_admin = await admin_check(message)

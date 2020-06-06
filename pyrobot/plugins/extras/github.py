@@ -1,9 +1,9 @@
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 
-@Client.on_message(Filters.command("github", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("github", COMMAND_HAND_LER) & sudo_filter)
 async def github(client, message):
     if len(message.text.split()) == 1:
             await message.edit("Usage: `github (username)`", parse_mode="md")

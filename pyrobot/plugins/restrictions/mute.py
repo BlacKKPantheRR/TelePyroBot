@@ -4,13 +4,13 @@ from pyrogram import (
     ChatPermissions
 )
 
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.admin_check import admin_check
 from pyrobot.helper_functions.extract_user import extract_user
 from pyrobot.helper_functions.string_handling import extract_time
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@Client.on_message(Filters.command("mute", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("mute", COMMAND_HAND_LER) & sudo_filter)
 async def mute_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin:
@@ -45,7 +45,7 @@ async def mute_user(_, message):
             )
 
 
-@Client.on_message(Filters.command("tmute", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("tmute", COMMAND_HAND_LER) & sudo_filter)
 async def temp_mute_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin:

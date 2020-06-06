@@ -1,10 +1,10 @@
 import asyncio
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 from pyrobot.helper_functions.admin_check import admin_check
 
-@Client.on_message(Filters.command("promote", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("promote", COMMAND_HAND_LER) & sudo_filter)
 async def promote_usr(client, message):
     rm = await message.reply_text("`Trying to Promote User.. Hang on!! ⏳`", parse_mode="md")
     is_admin = await admin_check(message)
@@ -37,7 +37,7 @@ async def promote_usr(client, message):
                 f"**ERROR:** `{ef}`", parse_mode="md")
 
 
-@Client.on_message(Filters.command("demote", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("demote", COMMAND_HAND_LER) & sudo_filter)
 async def demote_usr(client, message):
     rm = await message.reply_text("`Trying to Demote User.. Hang on!! ⏳`", parse_mode="md")
     is_admin = await admin_check(message)

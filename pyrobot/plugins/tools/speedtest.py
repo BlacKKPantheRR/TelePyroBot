@@ -1,10 +1,10 @@
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 from speedtest import Speedtest
 
-@Client.on_message(Filters.command("speedtest", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("speedtest", COMMAND_HAND_LER) & sudo_filter)
 async def listbots(client, message):
     await message.edit("`Running speed test . . .`")
     test = Speedtest()

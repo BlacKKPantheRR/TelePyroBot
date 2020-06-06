@@ -1,9 +1,9 @@
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
-@Client.on_message(Filters.command("id", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("id", COMMAND_HAND_LER) & sudo_filter)
 async def get_id(client, message):
     file_id = None
     user_id = None

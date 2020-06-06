@@ -5,7 +5,7 @@ import time
 
 from pyrogram import Client, Filters
 
-from pyrobot import COMMAND_HAND_LER, app
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD, app
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 # -- Constants -- #
@@ -21,12 +21,12 @@ async def check_alive(_, message):
     await message.reply_text(ALIVE, parse_mode="md")
 
 
-@Client.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
 async def help_me(_, message):
     await message.reply_sticker(HELP)
 
 
-@Client.on_message(Filters.command("ping", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("ping", COMMAND_HAND_LER) & sudo_filter)
 async def ping(_, message):
     start_t = time.time()
     rm = await message.reply_text("Pinging...")
@@ -35,6 +35,6 @@ async def ping(_, message):
     await rm.edit(f"Pong!\n`{time_taken_s:.3f}` ms", parse_mode="md")
 
 
-@Client.on_message(Filters.command("repo", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("repo", COMMAND_HAND_LER) & sudo_filter)
 async def repo(_, message):
     await message.reply_text(REPO)

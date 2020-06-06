@@ -6,7 +6,7 @@ Check info of cases corona virus disease 2019
 """
 
 from pyrogram import Client, Filters
-from pyrobot import COMMAND_HAND_LER
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 import os
@@ -16,7 +16,7 @@ import asyncio
 from prettytable import PrettyTable
 import requests
 
-@Client.on_message(Filters.command("covid", COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command("covid", COMMAND_HAND_LER) & sudo_filter)
 async def covid(client, message):
     await message.edit("`Processing...`", parse_mode="md")
     args = message.text.split(None, 1)
