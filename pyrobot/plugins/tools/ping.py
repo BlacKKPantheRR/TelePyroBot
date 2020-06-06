@@ -38,9 +38,9 @@ async def check_alive(_, message):
     if seconds:
         alivetext += "{} seconds".format(seconds)
 
-     TIME_ALIVE= f"\nBot was alive for `{alivetext}`"
-     text = ALIVE + TIME_ALIVE
-     await message.reply_text(text, parse_mode="md")
+    TIME_ALIVE= f"\nBot was alive for `{alivetext}`"
+    text = ALIVE + TIME_ALIVE
+    await message.reply_text(text, parse_mode="md")
 
 
 @PyroBotCMD.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
