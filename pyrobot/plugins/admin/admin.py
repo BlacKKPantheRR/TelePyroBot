@@ -7,7 +7,7 @@ from pyrobot.helper_functions.admin_check import admin_check
 
 @PyroBotCMD.on_message(Filters.command("promote", COMMAND_HAND_LER) & sudo_filter)
 async def promote_usr(client, message):
-    rm = await message.reply_text("`Trying to Promote User.. Hang on!! ⏳`", parse_mode="md")
+    rm = await message.edit("`Trying to Promote User.. Hang on!! ⏳`", parse_mode="md")
     is_admin = await admin_check(message)
 
     if not is_admin:
@@ -33,7 +33,7 @@ async def promote_usr(client, message):
 
 @PyroBotCMD.on_message(Filters.command("demote", COMMAND_HAND_LER) & sudo_filter)
 async def demote_usr(client, message):
-    rm = await message.reply_text("`Trying to Demote User.. Hang on!! ⏳`", parse_mode="md")
+    rm = await message.edit("`Trying to Demote User.. Hang on!! ⏳`", parse_mode="md")
     is_admin = await admin_check(message)
 
     if not is_admin:

@@ -32,7 +32,7 @@ async def ban_user(_, message):
             )
         else:
             await message.reply_text(
-                "No one else is dustനു..! "
+                "No one else is dust..! "
                 f"<a href='tg://user?id={user_id}'>"
                 f"{user_first_name}"
                 "</a>"
