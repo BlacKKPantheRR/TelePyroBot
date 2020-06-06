@@ -36,6 +36,7 @@ async def restart(client, message):
         "Start me manually from your **Heroku Dashboard** by turning on the **__worker__ dyno**", parse_mode="md")
     res = requests.post(url, headers = headers)
 
+
 @PyroBotCMD.on_message(Filters.command("dynostats", COMMAND_HAND_LER) & sudo_filter)
 async def dynostats(client, message):
     msg = await message.reply_text(

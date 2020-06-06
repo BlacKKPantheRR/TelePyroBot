@@ -2,6 +2,7 @@ import asyncio
 from pyrogram import Client, Filters
 from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
+from pyrobot.helper_functions.extract_user import extract_user
 from pyrobot.helper_functions.admin_check import admin_check
 
 @PyroBotCMD.on_message(Filters.command("promote", COMMAND_HAND_LER) & sudo_filter)
@@ -12,15 +13,8 @@ async def promote_usr(client, message):
     if not is_admin:
         return
 
-    if message.reply_to_message:
-        user_id = message.reply_to_message.from_user.id
-    else:
-        args = message.input_str.split(maxsplit=1)
-        if len(args) == 1:
-            user_id = args[0]
-        else:
-            await rm.edit("`no valid user_id or message specified,`", parse_mode="md")
-
+    user_id, user_first_name = extract_user(message)
+    chat_id = message.chat.id
     if user_id and chat_id:
         try:
             await client.promote_chat_member(chat_id, user_id,
@@ -30,7 +24,7 @@ async def promote_usr(client, message):
                                             can_invite_users=True,
                                             can_pin_messages=True)
             await asyncio.sleep(2)
-            await rm.edit("`👑 Promoted Successfully..`", parse_mode="md")
+            await rm.edit(f"`👑 Promoted` [{user_first_name}](tg://user?id={user_id}) `Successfully...`", parse_mode="md")
         except Exception as ef:
             await rm.edit(
                 text="`something went wrong`\n\n"
@@ -45,14 +39,8 @@ async def demote_usr(client, message):
     if not is_admin:
         return
 
-    if message.reply_to_message:
-        user_id = message.reply_to_message.from_user.id
-    else:
-        args = message.input_str.split(maxsplit=1)
-        if len(args) == 1:
-            user_id = args[0]
-        else:
-            await rm.edit("`no valid user_id or message specified`", parse_mode="md")
+    user_id, user_first_name = extract_user(message)
+    chat_id = message.chat.i
 
     if user_id and chat_id:
         try:
@@ -63,7 +51,7 @@ async def demote_usr(client, message):
                                             can_invite_users=False,
                                             can_pin_messages=False)
             await asyncio.sleep(2)
-            await rm.edit("`Demoted Successfully..`", parse_mode="md")
+            await rm.edit(f"`Demoted` [{user_first_name}](tg://user?id={user_id}) `Successfully...`", parse_mode="md")
         except Exception as ef:
             await rm.edit(
                 text="`something went wrong`\n\n"
