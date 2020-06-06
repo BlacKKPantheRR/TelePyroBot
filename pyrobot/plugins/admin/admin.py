@@ -40,7 +40,7 @@ async def demote_usr(client, message):
         return
 
     user_id, user_first_name = extract_user(message)
-    chat_id = message.chat.i
+    chat_id = message.chat.id
 
     if user_id and chat_id:
         try:
