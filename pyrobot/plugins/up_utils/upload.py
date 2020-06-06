@@ -12,7 +12,8 @@ from pyrogram import (
 
 from pyrobot import (
     COMMAND_HAND_LER,
-    TMP_DOWNLOAD_DIRECTORY
+    TMP_DOWNLOAD_DIRECTORY,
+    PyroBotCMD
 )
 from pyrobot.helper_functions.check_if_thumb_exists import is_thumb_image_exists
 from pyrobot.helper_functions.cust_p_filters import sudo_filter

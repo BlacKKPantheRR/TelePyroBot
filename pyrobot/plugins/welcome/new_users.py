@@ -6,7 +6,8 @@ from pyrogram import (
 from pyrobot import (
     COMMAND_HAND_LER,
     DB_URI,
-    TG_URI
+    TG_URI,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.msg_types import (

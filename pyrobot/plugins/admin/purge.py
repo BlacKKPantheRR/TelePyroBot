@@ -7,7 +7,8 @@ from pyrogram import Client, Filters
 
 from pyrobot import (
     COMMAND_HAND_LER,
-    TG_MAX_SELECT_LEN
+    TG_MAX_SELECT_LEN,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.admin_check import admin_check

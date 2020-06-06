@@ -6,7 +6,8 @@ from pyrogram import (
 from pyrobot import (
     COMMAND_HAND_LER,
     DB_URI,
-    MAX_MESSAGE_LENGTH
+    MAX_MESSAGE_LENGTH,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.admin_check import admin_check

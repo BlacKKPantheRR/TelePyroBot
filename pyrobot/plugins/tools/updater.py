@@ -12,7 +12,8 @@ from pyrobot import (
     HEROKU_API_KEY,
     LOGGER,
     MAX_MESSAGE_LENGTH,
-    OFFICIAL_UPSTREAM_REPO
+    OFFICIAL_UPSTREAM_REPO,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.cust_p_filters import owner_filter

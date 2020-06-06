@@ -7,7 +7,8 @@ from pyrogram import Client, Filters
 from pyrogram.client.handlers.handler import Handler
 from pyrobot import (
     COMMAND_HAND_LER,
-    LOGGER
+    LOGGER,
+    PyroBotCMD
 )
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 

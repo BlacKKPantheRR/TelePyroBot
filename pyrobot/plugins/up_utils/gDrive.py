@@ -21,7 +21,8 @@ from pyrobot import (
     G_DRIVE_CLIENT_ID,
     G_DRIVE_CLIENT_SECRET,
     LOGGER,
-    TMP_DOWNLOAD_DIRECTORY
+    TMP_DOWNLOAD_DIRECTORY,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.display_progress_dl_up import progress_for_pyrogram

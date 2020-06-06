@@ -10,7 +10,8 @@ from pyrogram import (
 )
 from pyrobot import (
     COMMAND_HAND_LER,
-    DB_URI
+    DB_URI,
+    PyroBotCMD
 )
 
 from pyrobot.helper_functions.admin_check import admin_check

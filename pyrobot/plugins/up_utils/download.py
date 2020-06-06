@@ -12,7 +12,8 @@ from pyrogram import Client, Filters
 from pyrobot import (
     COMMAND_HAND_LER,
     LOGGER,
-    TMP_DOWNLOAD_DIRECTORY
+    TMP_DOWNLOAD_DIRECTORY,
+    PyroBotCMD
 )
 from pyrobot.helper_functions.display_progress_dl_up import (
     progress_for_pyrogram,
