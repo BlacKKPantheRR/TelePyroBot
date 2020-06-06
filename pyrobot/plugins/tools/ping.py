@@ -4,8 +4,8 @@ Syntax: .ping"""
 import time
 
 from pyrogram import Client, Filters
-
-from pyrobot import COMMAND_HAND_LER, PyroBotCMD, app
+from pyrobot.__main__ import get_runtime
+from pyrobot import COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 # -- Constants -- #
@@ -16,8 +16,30 @@ REPO = ("User / Bot is available on GitHub:\n"
 # -- Constants End -- #
 
 
-@app.on_message(Filters.command(["alive", "start"], COMMAND_HAND_LER) & sudo_filter)
+@PyroBotCMD.on_message(Filters.command(["alive", "start"], COMMAND_HAND_LER) & sudo_filter)
 async def check_alive(_, message):
+    a = await get_runtime()
+    b = int(time.time())
+    c = b - a
+    month = c // 2678400
+    days = c // 86400
+    hours = c // 3600 % 24
+    minutes = c // 60 % 60
+    seconds = c % 60
+
+    alivetext = ""
+    if month:
+        alivetext += "{} month, ".format(month)
+    if days:
+        alivetext += "{} days, ".format(days)
+    if hours:
+        alivetext += "{} hours, ".format(hours)
+    if minutes:
+        alivetext += "{} minutes, ".format(minutes)
+    if seconds:
+        alivetext += "{} seconds".format(seconds)
+
+    ALIVE += "\nBot was alive for `{}`".format(alivetext)
     await message.reply_text(ALIVE, parse_mode="md")
 
 
