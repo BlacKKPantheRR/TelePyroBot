@@ -10,37 +10,16 @@ from pyrobot.helper_functions.cust_p_filters import sudo_filter
 # -- Constants -- #
 ALIVE = "`I'm Alive :3`"
 HELP = "CAADAgAD6AkAAowucAABsFGHedLEzeUWBA"
-REPO = ("User / Bot is available on GitHub:\n"
-        "https://github.com/SkuzzyxD/TelePyroBot")
+REPO = "**UserBot is available on** [GitHub](https://github.com/SkuzzyxD/TelePyroBot)"
 # -- Constants End -- #
 
 
 @PyroBotCMD.on_message(Filters.command(["alive", "start"], COMMAND_HAND_LER) & sudo_filter)
 async def check_alive(_, message):
-    a = await get_runtime()
-    b = int(time.time())
-    c = b - a
-    month = c // 2678400
-    days = c // 86400
-    hours = c // 3600 % 24
-    minutes = c // 60 % 60
-    seconds = c % 60
-
-    alivetext = ""
-    if month:
-        alivetext += "{} month, ".format(month)
-    if days:
-        alivetext += "{} days, ".format(days)
-    if hours:
-        alivetext += "{} hours, ".format(hours)
-    if minutes:
-        alivetext += "{} minutes, ".format(minutes)
-    if seconds:
-        alivetext += "{} seconds".format(seconds)
-
-    TIME_ALIVE= f"\nBot was alive for `{alivetext}`"
-    text = ALIVE + TIME_ALIVE
-    await message.reply_text(text, parse_mode="md")
+    try:
+        await message.edit(ALIVE)
+    except:
+        await message.reply_text(ALIVE)
 
 
 @PyroBotCMD.on_message(Filters.command("help", COMMAND_HAND_LER) & sudo_filter)
@@ -51,7 +30,10 @@ async def help_me(_, message):
 @PyroBotCMD.on_message(Filters.command("ping", COMMAND_HAND_LER) & sudo_filter)
 async def ping(_, message):
     start_t = time.time()
-    rm = await message.reply_text("Pinging...")
+    try:
+        await message.edit("Pinging...")
+    except:
+        rm = await message.reply_text("Pinging...")
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
     await rm.edit(f"Pong!\n`{time_taken_s:.3f}` ms", parse_mode="md")
@@ -59,4 +41,7 @@ async def ping(_, message):
 
 @PyroBotCMD.on_message(Filters.command("repo", COMMAND_HAND_LER) & sudo_filter)
 async def repo(_, message):
-    await message.reply_text(REPO)
+    try:
+        await message.edit(REPO)
+    except:
+        await message.reply_text(REPO)
