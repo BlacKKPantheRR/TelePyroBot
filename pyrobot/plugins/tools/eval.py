@@ -11,7 +11,7 @@ import traceback
 
 from pyrogram import Client, Filters
 
-from pyrobot import MAX_MESSAGE_LENGTH, COMMAND_HAND_LER
+from pyrobot import MAX_MESSAGE_LENGTH, COMMAND_HAND_LER, PyroBotCMD
 from pyrobot.helper_functions.cust_p_filters import sudo_filter
 
 
